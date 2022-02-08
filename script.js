@@ -6,8 +6,10 @@ const lifeEvents = [
   { schoolEvent: "finished high school" },
   { carEvent: "got a car" },
   { jobEvent: "got a job" },
-  { drumEvent: "got good at drums" },
+  { drumEvent: "got good at drums" }, // the array doesnt NEED a property
 ];
+const hours = 50;
+const wage = 10;
 
 if (pineapplePizza) {
   console.log(
@@ -19,14 +21,15 @@ if (pineapplePizza) {
   );
 }
 
-for (let i = 0; i <= lifeEvents.length; i++) {
+for (let i = 0; i < lifeEvents.length; i++) {
+  //i <= would do 1 more answer than the length if i starts at 0
   console.log(lifeEvents[i]);
 }
 
-let counter = 0;
+let counter = 0; //cleaner to keep all variables at the top
 
 while (true) {
-  let randomNumber = Math.floor(Math.random() * 10) + 1;
+  const randomNumber = Math.floor(Math.random() * 10) + 1; //not let because it is a brand new random number at the start of every loop (let, instead wants to revalue the declaration?)
   if (randomNumber !== 5) {
     counter++;
     console.log("randomNumber !== 5");
@@ -37,4 +40,20 @@ while (true) {
     );
     break;
   }
+}
+
+if (hours <= 40) {
+  let pay = hours * wage;
+  const weeks = Math.floor(1000000 / pay);
+  console.log(
+    `Your paycheck comes out to ${pay}. it will take ${
+      1000000 / pay //should make a separate formula to put this in Math.floor for a clean integer
+    } weeks to become a millionaire`
+  );
+} else {
+  pay = 40 * wage + (hours - 40) * (wage * 1.5);
+  const weeks = Math.floor(1000000 / pay);
+  console.log(
+    `Your paycheck comes out to ${pay}. it will take ${weeks} weeks to become a thicc millionaire`
+  );
 }
